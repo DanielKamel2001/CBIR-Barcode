@@ -1,5 +1,5 @@
 # CBIR-Barcode
-Content based image retrieval program using radon barcodes generated for 28x28 pixel handwritten digits.
+Content based image retrieval program using radon barcodes generated for 28x28 pixel handwritten digits, in Python.
 The CBIR pdf contained within the main folder includes the full version of this report including sample images.
 
 Created by Daniel Gohara Kamel and Jessica Leishman
