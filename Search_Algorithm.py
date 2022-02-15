@@ -1,7 +1,7 @@
 # SOFE 2715U Data Structures
 # Course Project: Content Based Image Retrieval of Handwritten Digits
 # Search_Algorithm.py
-# Kevin Erskine (100762922), Daniel Gohara Kamel (100754671), Jessica Leishman (100747155)
+# Daniel Gohara Kamel (100754671), Kevin Erskine (100762922) , Jessica Leishman (100747155)
 
 from cv2 import cv2
 import os
@@ -9,8 +9,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 from Barcode_Generator import *
-
-# CREATE A FOLDER CALLED "matches" IN THE SAME DIRECTORY AS THE DATASET, AND THIS PROGRAM TO ENABLE MATCH-IMAGE SAVING. NEW MATCHES WILL CONTINUALLY BE ADDED TO THIS FOLDER.
 
 # Finds the closest match for a single image
 def find_one(figures, toFind, foundMatches, saveImg):
@@ -101,6 +99,9 @@ def find_all(images, foundMatches, saveImg):
     print("Correct matches:",founds)
 
 
+
+
+
 # np array of all dataset images as a 18 by 18 matrix
 images = get_images()
 
@@ -134,6 +135,9 @@ while(valid_choice != True):
     if(saveChoice == "1"):
         saveChoice = int(saveChoice)
         valid_choice = True
+        # checkes if the matches folder already exists, creates it if not
+        if not os.path.exists("./matches"):
+            os.makedirs("./matches")
 
     elif(saveChoice == "2"):
         saveChoice = int(saveChoice)

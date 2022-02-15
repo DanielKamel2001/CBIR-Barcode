@@ -1,10 +1,12 @@
 # CBIR-Barcode
+
 Content based image retrieval program using radon barcodes generated for 28x28 pixel handwritten digits, in Python.
 The CBIR pdf contained within the main folder includes the full version of this report including sample images.
 
 Created by Daniel Gohara Kamel and Jessica Leishman
 
 ## Introduction
+
 This report seeks to explore the use of content based image retrieval through the use of handwritten digits and the radon barcode method. Using a text-based image search can only be as accurate as the annotations on an image; utilizing an image as a query yields new data possibilities and patterns not inherently visible to the human eye. This leads to new and unique ways to approach the typical keyword search.
 
 Images are composed of pixels, which are a series of bits that describe the colour to be displayed. This program procedurally analyzes these images by taking various projection angles that emanate from the centre of the image, as this is an effective way to get several “snapshots” of what the image might be. This was then used to generate a barcode and compare this to other images to find similar images.
@@ -12,7 +14,8 @@ Images are composed of pixels, which are a series of bits that describe the colo
 For this program, the images in the MNIST_DS folder provided are used as both the user_given_dataset and the dataset to compare against.
 
 ## Required Packages and Folders
-This repository should contain an empty folder called matches. This must be present in order for the use of the program. If you do not see this, please create it.
+
+This repository should contain a folder called matches. This must be present in order for the use of the program. If you do not see it the script should create it.
 
 In addition to this folder, please ensure the following packages are installed on your system:
 OpenCV
@@ -21,8 +24,14 @@ Scikit-image
 Matplotlib
 pillow
 
+## Running the Scripts
+
+Run the `Barcode_Generator.py` script first to generate the series of barcodes containing image information in a text file called `codes.txt`, this file should be included in the repository already but you can delete it and run the script to re-generate it. Next run the `Search_Algorithm.py` script and answer the prompts to determine which image a match will be seached for and if it will be saved after runtime. All mathces should already be included in the repository, but you can delete the folder or all the images and re-generate them.
+
 ---
+
 ## Retrieval Accuracy in Terms of Hit Ratio(%):
+
 The retrieval accuracy of the program created is 73%. Each of the 100 images within the dataset were used as the query.
 
 Each category had varying success rates, as can be seen in the breakdown below:
@@ -54,21 +63,24 @@ Each category had varying success rates, as can be seen in the breakdown below:
 | Average* time to find all matches (ms) | 358.28065872192382813 (0.3583 seconds) | 673.38228225708007813 (0.6734 seconds) |
 | Average* time to find and save all matches (ms) | 17575.805187225341797 (17.5758 seconds) | 18359.216213226318359 (18.3592 seconds) |
 
-*_each average time was taken from 5 sample runs of the program under the same conditions._
+\*_each average time was taken from 5 sample runs of the program under the same conditions._
 
 ---
+
 ## Results Analysis
+
 ### Process Analysis:
+
 Searching using the original images un-cropped using the 4 recommended projections 0, 45, 90, 135 degrees resulted in a hit accuracy of 51%
 
-Increasing the number of projections from the recommended 4 to 9 using 15 degree increments allowed the program to achieve a hit accuracy of 59%. These projections were taken from [0°,135°]. 
+Increasing the number of projections from the recommended 4 to 9 using 15 degree increments allowed the program to achieve a hit accuracy of 59%. These projections were taken from [0°,135°].
 
-The images were then cropped to remove blank space that made a border around most of the digits in the dataset. They were first cropped to a 20x20 pixel image, using rows and columns 3 to 23 of the image-array, which yielded a hit accuracy of 67%. This was further refined to an 18x18 pixel image, using rows and columns 4 to 22 to produce a hit accuracy of 69%. This final crop of rows and columns 4 to 22 was found by trial and error, and was the best setting found for this data set. 
+The images were then cropped to remove blank space that made a border around most of the digits in the dataset. They were first cropped to a 20x20 pixel image, using rows and columns 3 to 23 of the image-array, which yielded a hit accuracy of 67%. This was further refined to an 18x18 pixel image, using rows and columns 4 to 22 to produce a hit accuracy of 69%. This final crop of rows and columns 4 to 22 was found by trial and error, and was the best setting found for this data set.
 
 Further increasing the projections to 12, using 15 degree increments over [0°,165°] resulted in an accuracy increase of 4%, increasing the final hit accuracy to 73%
 
-
 ### Running Time Analysis:
+
 With 4 projections, the barcode generation takes 95.535755157470703125 ms (0.0955 seconds). The time to generate the matches for the entirety of the dataset is 358.28065872192382813 ms (0.3583 seconds), and the time to generate these matches and save them to the test computer is 17575.805187225341797 ms (17.5758 seconds).
 The hit accuracy was 68%.
 
@@ -78,12 +90,14 @@ The time to generate a single match and save it to the test computer with 4 proj
 
 With 12 projections, the barcode generation takes 231.7333221435546875 ms (0.2317 seconds). The time to generate the matches for the entirety of the dataset is 673.38228225708007813 ms (0.6734 seconds), and the time to generate these matches and save them to the test computer is 18359.216213226318359 ms (18.3592 seconds).
 
-The time to generate a single match with 12 projections for dataset index 1, 50, and 100 were 13.066530227661132813 ms (0.0131 seconds), 18.4078216552734375 ms (0.0184 seconds),  and 15.038728713989257813 ms (0.0151 seconds) respectively.
+The time to generate a single match with 12 projections for dataset index 1, 50, and 100 were 13.066530227661132813 ms (0.0131 seconds), 18.4078216552734375 ms (0.0184 seconds), and 15.038728713989257813 ms (0.0151 seconds) respectively.
 
 The time to generate a single match and save it to the test computer with 12 projections for dataset index 1, 50, and 100 were 244.56787109375 ms (0.2446 seconds), 218.28866004943847656 ms (0.2183 seconds), and 216.907501220703125 ms (0.2169 seconds) respectively.
 
 ---
+
 ## Concluding Remarks
+
 Overall, the program operates successfully. It runs with a hit accuracy of 73% and runs almost equally as well with the addition of newly created images. The program runs in O(n) time to find a match for a single image in the database, and runs in O(n2) to find matches for all of the images in the database.
 
 Searching using the original images, un-cropped, using the 4 recommended projections 0, 45, 90, 135 degrees resulted in a hit ratio of 51%. Uncropped images with 12 projections had a hit ratio of 64% (from Table 2).
@@ -100,5 +114,4 @@ One key factor which may have contributed to a reduced hit ratio is the format i
 
 To further improve the program, one might consider adding even more projections. While this slows down the overall speed at which it runs due to each barcode increasing by 18 digits for every projection. Currently, each barcode is 216 digits long. When each image was processed using only 4 projections, the accuracy is 68% with barcodes that are 72 digits long.
 
-12 projections were decided upon as it most thoroughly covered the image, and yielded a reasonable increase in accuracy with a relatively small increase in running time as seen in the running time analysis section above and Table 2. While tripling the projections did lead to an  increase in running time by a factor of 3, the increase in accuracy is valuable enough to warrant it for a dataset of this size. It is for this reason that 12 projections were utilized. If the dataset were to increase in size significantly the programmer may decide that the trade off is not worth it. 
-
+12 projections were decided upon as it most thoroughly covered the image, and yielded a reasonable increase in accuracy with a relatively small increase in running time as seen in the running time analysis section above and Table 2. While tripling the projections did lead to an increase in running time by a factor of 3, the increase in accuracy is valuable enough to warrant it for a dataset of this size. It is for this reason that 12 projections were utilized. If the dataset were to increase in size significantly the programmer may decide that the trade off is not worth it.

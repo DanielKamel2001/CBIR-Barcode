@@ -10,8 +10,6 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import skimage.transform as ski
 
-# CREATE A FOLDER CALLED "matches" IN THE SAME DIRECTORY AS THE DATASET, AND THIS PROGRAM TO ENABLE MATCH-IMAGE SAVING.
-
 # Obtains the cropped array of all the data set images
 def get_images():
     

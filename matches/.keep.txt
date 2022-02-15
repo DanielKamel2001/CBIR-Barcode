@@ -1,1 +1,0 @@
-txt file to keep matches folder in github for ease of running program (requires empty matches folder for operation)
