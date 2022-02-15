@@ -26,7 +26,7 @@ pillow
 
 ## Running the Scripts
 
-Run the `Barcode_Generator.py` script first to generate the series of barcodes containing image information in a text file called `codes.txt`, this file should be included in the repository already but you can delete it and run the script to re-generate it. Next run the `Search_Algorithm.py` script and answer the prompts to determine which image a match will be seached for and if it will be saved after runtime. All mathces should already be included in the repository, but you can delete the folder or all the images and re-generate them.
+Run the `Barcode_Generator.py` script first to generate the series of barcodes containing image information in a text file called `codes.txt`, this file should be included in the repository already but you can delete it and run the script to re-generate it. Next run the `Search_Algorithm.py` script and answer the prompts to determine which image a match will be seached for and if it will be saved after runtime. All matches should already be included in the repository, but you can delete the folder or all the images and re-generate them.
 
 ---
 
